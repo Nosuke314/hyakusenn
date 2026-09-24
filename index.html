@@ -1,0 +1,141 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
+  <meta name="theme-color" content="#efefed" />
+  <title>百戦</title>
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="page-bg" aria-hidden="true"></div>
+
+  <header class="site-header">
+    <div class="brand-mark" aria-hidden="true"><span></span><span></span><span></span></div>
+    <div>
+      <h1>百戦</h1>
+      <p>100 QUESTIONS, 1 ANSWER.</p>
+    </div>
+    <button id="helpButton" class="icon-button" type="button" aria-label="遊び方">?</button>
+  </header>
+
+  <main class="site-main">
+    <section class="progress-card" aria-label="進捗">
+      <div>
+        <span class="eyebrow">PROGRESS</span>
+        <strong id="progressText">0 / 99</strong>
+      </div>
+      <div class="progress-track" aria-hidden="true"><div id="progressBar"></div></div>
+      <span id="todayText" class="today-text"></span>
+    </section>
+
+    <section aria-labelledby="question-list-title">
+      <div class="section-heading">
+        <h2 id="question-list-title">QUESTIONS</h2>
+        <span id="unlockCount"></span>
+      </div>
+      <div id="questionGrid" class="question-grid"></div>
+    </section>
+
+    <section class="final-section" aria-labelledby="final-title">
+      <div class="final-line"></div>
+      <p class="final-kicker">FINAL</p>
+      <button id="finalCard" class="final-card" type="button">
+        <span class="final-number">100</span>
+        <span class="final-copy">
+          <strong id="final-title">THE LAST QUESTION</strong>
+          <small id="finalStatus">PAGE OPEN • IMAGE 12.31</small>
+        </span>
+        <span class="final-arrow" aria-hidden="true">→</span>
+      </button>
+    </section>
+  </main>
+
+  <dialog id="questionDialog" class="question-dialog">
+    <div class="dialog-shell">
+      <div class="dialog-topbar">
+        <div>
+          <span class="eyebrow">QUESTION</span>
+          <strong id="dialogNumber">001</strong>
+        </div>
+        <button id="closeDialog" class="icon-button" type="button" aria-label="閉じる">×</button>
+      </div>
+
+      <div id="lockedView" class="locked-view" hidden>
+        <div class="lock-symbol" aria-hidden="true"></div>
+        <h3>まだ開けません</h3>
+        <p id="unlockDateText"></p>
+      </div>
+
+      <div id="questionView" hidden>
+        <div class="question-image-wrap">
+          <img id="questionImage" class="question-image" alt="問題画像" />
+          <div id="imagePlaceholder" class="image-placeholder" hidden>
+            <span>QUESTION IMAGE</span>
+            <strong id="imagePlaceholderNumber"></strong>
+            <small>questions/q001.png のように画像を配置してください</small>
+          </div>
+        </div>
+
+        <form id="answerForm" class="answer-form">
+          <label for="answerInput">あなたの回答</label>
+          <div class="answer-row">
+            <input id="answerInput" name="answer" type="text" autocomplete="off" enterkeyhint="done" placeholder="回答を入力" />
+            <button class="primary-button" type="submit">保存</button>
+          </div>
+          <p id="answerMessage" class="answer-message" aria-live="polite"></p>
+        </form>
+
+        <div class="dialog-meta">
+          <span id="savedAtText"></span>
+          <button id="clearAnswerButton" class="text-button" type="button">回答を消す</button>
+        </div>
+      </div>
+    </div>
+  </dialog>
+
+  <dialog id="finalDialog" class="question-dialog final-dialog">
+    <div class="dialog-shell">
+      <div class="dialog-topbar">
+        <div>
+          <span class="eyebrow">FINAL QUESTION</span>
+          <strong>100</strong>
+        </div>
+        <button id="closeFinalDialog" class="icon-button" type="button" aria-label="閉じる">×</button>
+      </div>
+
+      <div class="question-image-wrap final-image-wrap">
+        <img id="finalQuestionImage" class="question-image" alt="第100問" hidden />
+        <div id="finalImageLocked" class="final-image-locked">
+          <div class="lock-symbol" aria-hidden="true"></div>
+          <strong>FINAL IMAGE</strong>
+          <p id="finalImageDateText"></p>
+        </div>
+      </div>
+
+      <div class="final-entry">
+        <span class="eyebrow">ANSWER</span>
+        <a id="finalFormButton" class="final-form-button disabled" target="_blank" rel="noopener noreferrer" aria-disabled="true">回答はこちらから</a>
+        <p id="finalFormNote" class="final-form-note"></p>
+      </div>
+    </div>
+  </dialog>
+
+  <dialog id="helpDialog" class="help-dialog">
+    <div class="dialog-shell help-shell">
+      <div class="dialog-topbar">
+        <div><span class="eyebrow">ABOUT</span><strong>遊び方</strong></div>
+        <button id="closeHelp" class="icon-button" type="button" aria-label="閉じる">×</button>
+      </div>
+      <p>番号をタップすると、その日の問題が開きます。1〜99問の入力した回答はこの端末のブラウザに保存されます。</p>
+      <p>1〜98問は毎日1問ずつ、99問目は12月31日に公開されます。100問目のページは初日から開けますが、問題画像は12月31日に公開されます。</p>
+      <p>100問目の最終解答は「回答はこちらから」ボタンの外部フォームで受け付けます。</p>
+      <p class="muted">※端末を変えたりブラウザのデータを削除した場合、保存内容は引き継がれません。</p>
+    </div>
+  </dialog>
+
+  <script src="config.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
