@@ -20,7 +20,7 @@ window.HYAKUSEN_CONFIG = {
   startDate: "2026-09-24",       // JST基準
   totalRegularQuestions: 99,
   finalImageDate: "2026-12-31", // 100問目の画像公開日
-  questionImageExtension: "png",
+  questionImageExtension: "jpg",
 
   // 100問目の外部回答フォームURL。
   // 例: "https://forms.gle/xxxxxxxxxxxxxxxxx"
